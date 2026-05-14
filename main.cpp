@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// NODE 
+
 class Node {
 public:
     int accNo;
@@ -10,39 +10,39 @@ public:
     Node* next;
 };
 
-// GLOBAL HEAD POINTER
+
 Node* head = NULL;
 
 // CREATE ACCOUNT FUNCTION
 void createAccount(int accNo, string name, float balance) {
 
-    // CREATE NEW NODE
+    
     Node* newNode = new Node();
 
-    // STORE DATA
+    
     newNode->accNo = accNo;
     newNode->name = name;
     newNode->balance = balance;
 
-    // LAST NODE POINTS TO NULL
+    
     newNode->next = NULL;
 
-    // IF LINKED LIST IS EMPTY
+    
     if(head == NULL) {
         head = newNode;
     }
 
-    // OTHERWISE ADD NODE AT END
+    
     else {
 
         Node* temp = head;
 
-        // MOVE TO LAST NODE
+        
         while(temp->next != NULL) {
             temp = temp->next;
         }
 
-        // CONNECT LAST NODE TO NEW NODE
+        
         temp->next = newNode;
     }
 
@@ -52,7 +52,7 @@ void createAccount(int accNo, string name, float balance) {
 // DISPLAY ALL ACCOUNTS
 void displayAccounts() {
 
-    // CHECK EMPTY LIST
+    
     if(head == NULL) {
         cout << "\nNo Accounts Found\n";
         return;
@@ -62,7 +62,7 @@ void displayAccounts() {
 
     cout << "\n===== ACCOUNT LIST =====\n";
 
-    // TRAVERSE LINKED LIST
+    
     while(temp != NULL) {
 
         cout << "Account No : " << temp->accNo << endl;
@@ -70,7 +70,7 @@ void displayAccounts() {
         cout << "Balance    : " << temp->balance << endl;
         cout << "--------------------------\n";
 
-        // MOVE TO NEXT NODE
+        
         temp = temp->next;
     }
 }
@@ -78,7 +78,7 @@ void displayAccounts() {
 // SEARCH ACCOUNT FUNCTION
 void searchAccount(int searchAccNo) {
 
-    // CHECK EMPTY LIST
+    
     if(head == NULL) {
         cout << "\nNo Accounts Found\n";
         return;
@@ -86,10 +86,10 @@ void searchAccount(int searchAccNo) {
 
     Node* temp = head;
 
-    // TRAVERSE LINKED LIST
+    
     while(temp != NULL) {
 
-        // CHECK ACCOUNT NUMBER
+        
         if(temp->accNo == searchAccNo) {
 
             cout << "\n===== ACCOUNT FOUND =====\n";
@@ -100,18 +100,18 @@ void searchAccount(int searchAccNo) {
             return;
         }
 
-        // MOVE TO NEXT NODE
+        
         temp = temp->next;
     }
 
-    // ACCOUNT NOT FOUND
+
     cout << "\nAccount Not Found\n";
 }
 
 // DEPOSIT MONEY FUNCTION
 void depositMoney(int accNo, float amount) {
 
-    // CHECK EMPTY LIST
+    
     if(head == NULL) {
         cout << "\nNo Accounts Found\n";
         return;
@@ -119,10 +119,10 @@ void depositMoney(int accNo, float amount) {
 
     Node* temp = head;
 
-    // SEARCH ACCOUNT
+    
     while(temp != NULL) {
 
-        // ACCOUNT FOUND
+        
         if(temp->accNo == accNo) {
 
             temp->balance = temp->balance + amount;
@@ -133,18 +133,18 @@ void depositMoney(int accNo, float amount) {
             return;
         }
 
-        // MOVE TO NEXT NODE
+        
         temp = temp->next;
     }
 
-    // ACCOUNT NOT FOUND
+    
     cout << "\nAccount Not Found\n";
 }
 
 // WITHDRAW MONEY FUNCTION
 void withdrawMoney(int accNo, float amount) {
 
-    // CHECK EMPTY LIST
+    
     if(head == NULL) {
         cout << "\nNo Accounts Found\n";
         return;
@@ -152,13 +152,13 @@ void withdrawMoney(int accNo, float amount) {
 
     Node* temp = head;
 
-    // SEARCH ACCOUNT
+    
     while(temp != NULL) {
 
-        // ACCOUNT FOUND
+        
         if(temp->accNo == accNo) {
 
-            // CHECK SUFFICIENT BALANCE
+            
             if(temp->balance >= amount) {
 
                 temp->balance = temp->balance - amount;
@@ -174,11 +174,11 @@ void withdrawMoney(int accNo, float amount) {
             return;
         }
 
-        // MOVE TO NEXT NODE
+        
         temp = temp->next;
     }
 
-    // ACCOUNT NOT FOUND
+    
     cout << "\nAccount Not Found\n";
 }
 
@@ -187,7 +187,7 @@ void withdrawMoney(int accNo, float amount) {
 // TRANSFER MONEY FUNCTION
 void transferMoney(int fromAcc, int toAcc, float amount) {
 
-    // CHECK EMPTY LIST
+    
     if(head == NULL) {
         cout << "\nNo Accounts Found\n";
         return;
@@ -198,7 +198,7 @@ void transferMoney(int fromAcc, int toAcc, float amount) {
 
     Node* temp = head;
 
-    // SEARCH BOTH ACCOUNTS
+    
     while(temp != NULL) {
 
         if(temp->accNo == fromAcc) {
@@ -212,25 +212,25 @@ void transferMoney(int fromAcc, int toAcc, float amount) {
         temp = temp->next;
     }
 
-    // CHECK SENDER
+    
     if(sender == NULL) {
         cout << "\nSender Account Not Found\n";
         return;
     }
 
-    // CHECK RECEIVER
+    
     if(receiver == NULL) {
         cout << "\nReceiver Account Not Found\n";
         return;
     }
 
-    // CHECK SUFFICIENT BALANCE
+    
     if(sender->balance < amount) {
         cout << "\nInsufficient Balance\n";
         return;
     }
 
-    // TRANSFER MONEY
+    
     sender->balance -= amount;
     receiver->balance += amount;
 
@@ -245,7 +245,7 @@ void transferMoney(int fromAcc, int toAcc, float amount) {
 
 int main() {
 
-    int choice;
+    char choice;
 
     int accNo;
     string name;
@@ -254,7 +254,7 @@ int main() {
 
     do {
 
-        cout << "\n===== BANK MENU =====\n";
+        cout << "\n===== WELCOME TO RUHUNA BANK =====\n";
         cout << "1. Create Account\n";
         cout << "2. Display Accounts\n";
         cout << "3. Search Account\n";
@@ -268,8 +268,8 @@ int main() {
 
         switch(choice) {
 
-            // CREATE ACCOUNT
-            case 1:
+            
+            case '1':
 
                 cout << "\nEnter Account Number : ";
                 cin >> accNo;
@@ -284,15 +284,15 @@ int main() {
 
                 break;
 
-            // DISPLAY ACCOUNTS
-            case 2:
+            
+            case '2':
 
                 displayAccounts();
 
                 break;
 
-            // SEARCH ACCOUNT
-            case 3:
+            
+            case '3':
 
                 cout << "\nEnter Account Number To Search : ";
                 cin >> accNo;
@@ -301,8 +301,8 @@ int main() {
 
                 break;
 
-            // DEPOSIT MONEY
-            case 4:
+            
+            case '4':
 
                 cout << "\nEnter Account Number : ";
                 cin >> accNo;
@@ -314,8 +314,8 @@ int main() {
 
                 break;
 
-            // WITHDRAW MONEY
-            case 5:
+            
+            case '5':
 
                 cout << "\nEnter Account Number : ";
                 cin >> accNo;
@@ -328,8 +328,8 @@ int main() {
                 break;
 
 
-            // TRANSFER MONEY
-            case 6: {
+            
+            case '6': {
 
                 int fromAcc, toAcc;
 
@@ -347,8 +347,8 @@ int main() {
                 break;
             }
 
-            // EXIT
-            case 7:
+            
+            case '7':
 
                 cout << "\nThank You For Using Bank System\n";
 
@@ -359,7 +359,7 @@ int main() {
                 cout << "\nInvalid Choice\n";
         }
 
-    } while(choice != 7);
+    } while(choice != '7');
 
     return 0;
 }
